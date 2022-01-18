@@ -29,9 +29,10 @@ def brute_force_algorithme():
 
     with open(primary_csv_file, newline='') as csv_file:
         reader = csv.DictReader(csv_file)
-        for elmnt in reader:
-            percentage_per_action = float(elmnt["cost"]) * float(elmnt["benefit "]) / 100
-            data_set.append(Dataset(elmnt["name"], elmnt["cost"], percentage_per_action).serialized_dataset)
+        for element in reader:
+            """ print(','.join(element)) """
+            percentage_per_action = float(element["cost"]) * float(element["benefit"]) / 100 
+            data_set.append(Dataset(element["name"], float(element["cost"]), float(element["benefit"]))).serialized_dataset
             
 
 print (brute_force_algorithme())
