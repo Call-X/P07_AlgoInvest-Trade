@@ -23,8 +23,8 @@ class Dataset:
        return f"{self.name}{self.cost}{self.benefit}"
 
 
-def brute_force_algorithme():
-
+def brute_force_algorithme(money_wallet):
+    
     data_set = []
     combinations = []
 
@@ -34,19 +34,20 @@ def brute_force_algorithme():
         reader = csv.DictReader(csv_file)
         for element in reader:
             """ print(','.join(element)) """
-            percentage_per_action = float(element["cost"]) * float(element["benefit"]) / 100 
+            action_productivity = float(element["cost"]) * float(element["benefit"]) / 100 
             """ print(percentage_per_action) """
-            data_set.append(Dataset(element["name"], (element["cost"]), percentage_per_action).serialized_dataset())
+            data_set.append(Dataset(element["name"], (element["cost"]), action_productivity).serialized_dataset())
             """ print(data_set) """
-    j = 0         
-    j = j + 1
-    for i in range(0, len(data_set)-j):
-        if data_set[i] > data_set[i+1]:
-            data_set[i], data_set[i+1] = data_set[i+1], data_set[i]
-            for element in combinations:
-                if element[2] <= 1:
+
+    for i in range(1, len(data_set) + 1):
+        for combination in cbts(data_set, i):
+            for element in combination:
+                if element[1] <= 0:
                     pass
+                elif sum(element[1] for element in combination) <= money_wallet:
+                    combinations.append(combination)
+                    print(combinations)
                 
 
-    return data_set
-print(brute_force_algorithme())
+
+brute_force_algorithme(500)
