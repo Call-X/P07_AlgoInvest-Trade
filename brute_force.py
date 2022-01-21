@@ -44,10 +44,13 @@ def brute_force_algorithme(money_wallet):
             for element in combination:
                 if element[1] <= 0:
                     pass
+                
                 elif sum(element[1] for element in combination) <= money_wallet:
                     combinations.append(combination)
-                    print(combinations)
+                    """ print(combinations) """
                 
 
-
+    sorted_combinations = sorted(combinations, key=lambda element: element[3])
+    print(sorted_combinations)
+            
 brute_force_algorithme(500)
