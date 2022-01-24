@@ -1,6 +1,6 @@
 import csv
-import time
 from itertools import combinations as cbts
+import time
 
 class Dataset:
 
@@ -54,6 +54,27 @@ def brute_force_algorithme(money_wallet):
                     combinations.append(final_combination)
                               
     sorted_combinations = max(combinations, key=lambda combination: combination["total_benefit"])
-    print(sorted_combinations)
-            
-brute_force_algorithme(500)
+    """ print(sorted_combinations) """
+    best_actions_combination = sorted_combinations["action_list"]
+    total_investment = sorted_combinations["total_cost"]
+    total_profit = sorted_combinations["total_benefit"]
+        
+    # Reports
+    print ("\n The best combination you can get is : \n")
+    print("_____________ \n")
+    for element in best_actions_combination:
+        print(element[0])
+    print("_____________")
+    print(f"\nFor a total investment of {total_investment}€ \n")
+    print(f"You'll get a profit of {round(total_profit, 2)}€ after 2 years")
+
+if __name__ == "__main__":
+    start_time = time.time()
+    brute_force_algorithme(500)  # O(n)
+    print("\nProgram executed in %s seconds" % (round(time.time() - start_time, 2 )) + "\n")
+
+
+
+
+
+
