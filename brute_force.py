@@ -1,6 +1,7 @@
 import csv
 from itertools import combinations as cbts
 import time
+import os
 
 class Dataset:
 
@@ -66,7 +67,7 @@ def brute_force_algorithme(money_wallet):
         print(element[0])
     print("_____________")
     print(f"\nFor a total investment of {total_investment}€ \n")
-    print(f"You'll get a profit of {round(total_profit, 2)}€ after 2 years")
+    print(f"You'll get a profit of {round(total_profit, 2)}€ after 2 years")  
 
 if __name__ == "__main__":
     start_time = time.time()
