@@ -33,11 +33,8 @@ def brute_force_algorithme(money_wallet):
     with open(primary_csv_file, newline="") as csv_file:
         reader = csv.DictReader(csv_file)
         for element in reader:
-            """ print(','.join(element)) """
             action_productivity = float(element["cost"]) * float(element["benefit"]) / 100 
-            """ print(percentage_per_action) """
             data_set.append(Dataset(element["name"], (element["cost"]), action_productivity).serialized_dataset())
-            """ print(data_set) """
 
     for i in range(1, len(data_set) + 1):
         for combination in cbts(data_set, i):
@@ -53,9 +50,10 @@ def brute_force_algorithme(money_wallet):
                     final_combination["total_cost"] += element[1]
                     final_combination["total_benefit"] += element[2]
                     combinations.append(final_combination)
+                    print
                               
     sorted_combinations = max(combinations, key=lambda combination: combination["total_benefit"])
-    """ print(sorted_combinations) """
+
     best_actions_combination = sorted_combinations["action_list"]
     total_investment = sorted_combinations["total_cost"]
     total_profit = sorted_combinations["total_benefit"]
