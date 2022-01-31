@@ -1,7 +1,8 @@
 import csv
 from itertools import combinations as cbts
 import time
-import os
+
+
 
 class Dataset:
 
@@ -50,7 +51,7 @@ def brute_force_algorithme(money_wallet):
                     final_combination["total_cost"] += element[1]
                     final_combination["total_benefit"] += element[2]
                     combinations.append(final_combination)
-                    print
+                   
                               
     sorted_combinations = max(combinations, key=lambda combination: combination["total_benefit"])
 

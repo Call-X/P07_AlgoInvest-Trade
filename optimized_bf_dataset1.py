@@ -1,12 +1,14 @@
 import csv
+
 import time
 
 actions = []
-dataset1 = "./csv_f/dataset2_Python+P7.csv"
+dataset1 = "./csv_f/dataset1_Python+P7.csv"
 
 with open (dataset1) as csv_file:
     csv_list = list(csv.reader(csv_file))
     for action in csv_list[1:]:
+        #exclude negative or 0 value action
         if float(action[1]) <= 0 or float(action[2]) <= 0:
             pass
         else:
@@ -28,7 +30,7 @@ def optimized_algorithm(wallet_cost, actions):
     w = wallet_cost
     n = number_of_actions
     final_combination = []
-
+    
     while w >= 0 and n >= 0:
         if matrix[n][w] != matrix[n-1][w]:
             final_combination.append(actions[n-1])
